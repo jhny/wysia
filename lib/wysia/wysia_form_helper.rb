@@ -1,20 +1,18 @@
 module Wysia
   module FormHelper
-      def wysia_text_area(element_id, size = nil, is_inline = false)
+      def wysia_text_area(element_id, element_name, size = nil, is_inline = false)
 
         size = " btn-mini" if size == "mini"
         size = " btn-small" if size == "small"
         size = "" if size.nil?
 
-
         content = <<HTML
-    <div id="wysihtml5-toolbar" style="display: none;" class="btn-toolbar">
+    <div id="wysihtml5-toolbar" style="" class="btn-toolbar">
         <div class="btn-group">
           <a class="btn#{size}" data-wysihtml5-command="bold"><i class="icon-bold"></i></a>
           <a class="btn#{size}" data-wysihtml5-command="italic"><i class="icon-italic"></i></a>
         </div>
 
-        <!-- Some wysihtml5 commands require extra parameters -->
         <div class="btn-group">
           <a class="btn#{size}" data-wysihtml5-command-value="h1" data-wysihtml5-command="formatBlock"><b>h1</b></a>
           <a class="btn#{size}" data-wysihtml5-command-value="h2" data-wysihtml5-command="formatBlock"><b>h2</b></a>
@@ -26,7 +24,6 @@ module Wysia
         </div>
 
         <div class="btn-group">
-          <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
           <a class="btn#{size}" data-wysihtml5-command="createLink"><i class="icon-link"></i></a>
         </div>
 
@@ -45,7 +42,6 @@ module Wysia
       <textarea id="#{element_id}" name="#{element_name}" placeholder="Enter your text ..."></textarea>
 HTML
 
-        #content_for(:javascript) do
          js =<<javascript
         var editor = new wysihtml5.Editor("#{element_id}", { // id of textarea element
         toolbar:"wysihtml5-toolbar", // id of toolbar element
@@ -59,7 +55,7 @@ javascript
           content = content + javascript_tag(js)
         else
           content_for(:javascript) do
-            js
+            javascript_tag(js).html_safe
           end
         end
 

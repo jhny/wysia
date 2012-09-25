@@ -1,29 +1,23 @@
 # Wysia
 
-TODO: Write a gem description
+# Build
+gem build wysia.gemspec
 
-## Installation
+# Installation
+gem install <dir>/wysia-0.0.2.gem
 
-Add this line to your application's Gemfile:
+# Example
+gem install /Users/johnny/code/wysia/wysia-0.0.2.gem
 
-    gem 'wysia'
+# App install
+For Js
+//= require wysia.js
 
-And then execute:
+For css
+@import "wysia.scss";
 
-    $ bundle
+# Usage
+<%= wysia_text_area("id-name", 'id-element').html_safe %>
 
-Or install it yourself as:
-
-    $ gem install wysia
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+small size
+<%= wysia_text_area("id-name", 'id-element', 'small').html_safe %>

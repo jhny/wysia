@@ -2,7 +2,7 @@
 require File.expand_path('../lib/wysia/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Johnny Eradus"]
+  gem.authors       = ["Johnny Eradus", "Benjamin Udink Ten Cate"]
   gem.email         = ["jeradus@gmail.com"]
   gem.description   = "wysihtml5 editor with font awesome"
   gem.summary       = "wysihtml5 editor with font awesome"
