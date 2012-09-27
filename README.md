@@ -2,34 +2,42 @@
 
 A WYSIWYG for textarea to work with Rails 3 FormBuilders
 
-#Includes
 This Gem uses
-- WYSIHTML5 http://xing.github.com/wysihtml5/ <- this actually does all the hard work
-- Font Awesome http://fortawesome.github.com/Font-Awesome/ <- used for scaling icons wich are AWESOME
+- [WYSIHTML5][1] <- this actually does all the hard work
+- [Font Awesome][2] <- used for scaling icons wich are AWESOME
+                                                            - 
+[1]:http://xing.github.com/wysihtml5/
+[2]:http://fortawesome.github.com/Font-Awesome/
 
-# Build
-gem build wysia.gemspec
+## Installation
 
-# Installation
-gem install <dir>/wysia-0.0.2.gem
+In your `Gemfile`, add the following dependencies:
 
-# Example
-gem install /Users/johnny/code/wysia/wysia-0.0.2.gem
+    gem 'wysia', :git => 'https://github.com/jhny/wysia.git'
 
-# Requirements
-# For Js
+Run:
+
+    $ bundle install
+
+include the Javascript (wysihtm5) into your `application.js`:
 //= require wysia.js
 
-# For css
+Include de css into your `applications.css`
 @import "wysia.scss";
 
-# Yield in application.html.haml
+#TODO: this should always be inline?
 yield :javascript
 
-
-
-# Usage
+## Usage
+In your views simply use the `wysia_text_area` helper
+default:
 <%= f.wysia_text_area :about %>
 
-small size
+TEST:small size:
 <%= f.wysia_text_area :about, size: "small" %>
+
+You can add options:
+<%= f.wysia_text_area :about, size: "small", rows: 5, class: "textarea" %>
+
+## Contribute
+Instead of pointing to the git repo, point to the local source `#gem 'wysia', :path =>  "/home/user/src/wysia"`
