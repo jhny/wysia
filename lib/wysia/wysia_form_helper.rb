@@ -1,11 +1,11 @@
 module Wysia
   module FormHelper
-      def wysia_text_area(element_id, element_name, size = nil, is_inline = false)
+      def wysia_text_area(object_name, method, options = {})
 
         size = " btn-mini" if size == "mini"
         size = " btn-small" if size == "small"
         size = "" if size.nil?
-
+        size = ""
         content = <<HTML
     <div id="wysihtml5-toolbar" style="" class="btn-toolbar">
         <div class="btn-group">
@@ -41,11 +41,11 @@ module Wysia
         </div>
         <div class="clearfix"></div>
       </div>
-      <textarea id="#{element_id}" name="#{element_name}" placeholder="Enter your text ..."></textarea>
+      #{text_area object_name, method, options}
 HTML
 
          js =<<javascript
-        var editor = new wysihtml5.Editor("#{element_id}", { // id of textarea element
+        var editor = new wysihtml5.Editor("#{object_name}_#{method}", { // id of textarea element
         toolbar:"wysihtml5-toolbar", // id of toolbar element
         stylesheets:"assets/wysiwyg/stylesheet.css", // stylesheet to be used
         parserRules:wysihtml5ParserRules // defined in parser rules set
@@ -53,7 +53,7 @@ HTML
 javascript
 
 
-        if is_inline
+        if options.has_key?("is_inline")
           content = content + javascript_tag(js)
         else
           content_for(:javascript) do
@@ -61,7 +61,18 @@ javascript
           end
         end
 
-        content
+        content.html_safe
       end
+    def self.included(arg)
+      ActionView::Helpers::FormBuilder.send(:include, Wysia::FormBuilder)
     end
+
+  end
+end
+module Wysia::FormBuilder
+  # ActionPack's metaprogramming would have done this for us, if FormHelper#labeled_input
+  # had been defined  at load.   Instead we define it ourselves here.
+  def wysia_text_area(method, options = {})
+    @template.wysia_text_area(@object_name, method, objectify_options(options))
+  end
 end
