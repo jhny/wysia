@@ -6,6 +6,7 @@ module Wysia
         size = " btn-small" if size == "small"
         size = "" if size.nil?
         size = ""
+        p options.inspect
         content = <<HTML
     <div id="wysihtml5-toolbar" style="" class="btn-toolbar">
         <div class="btn-group">
@@ -30,7 +31,6 @@ module Wysia
         <div class="btn-group">
           <a class="btn#{size}" data-wysihtml5-action="change_view"><i class="icon-edit"></i></a>
         </div>
-        <div class="clearfix"></div>
         <div data-wysihtml5-dialog="createLink" class="wysihtml5-dialog" style='display: none;'>
           <label>
             Link:
