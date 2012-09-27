@@ -30,14 +30,16 @@ module Wysia
         <div class="btn-group">
           <a class="btn#{size}" data-wysihtml5-action="change_view"><i class="icon-edit"></i></a>
         </div>
-
-        <div data-wysihtml5-dialog="createLink" style="display: none;">
+        <div class="clearfix"></div>
+        <div data-wysihtml5-dialog="createLink" class="wysihtml5-dialog" style='display: none;'>
           <label>
             Link:
             <input data-wysihtml5-dialog-field="href" value="http://" class="text">
           </label>
-          <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+          <a data-wysihtml5-dialog-action="save" class="ok">OK</a>
+          <a data-wysihtml5-dialog-action="cancel" class="cancel">Cancel</a>
         </div>
+        <div class="clearfix"></div>
       </div>
       <textarea id="#{element_id}" name="#{element_name}" placeholder="Enter your text ..."></textarea>
 HTML
@@ -45,7 +47,7 @@ HTML
          js =<<javascript
         var editor = new wysihtml5.Editor("#{element_id}", { // id of textarea element
         toolbar:"wysihtml5-toolbar", // id of toolbar element
-        stylesheets:"assets/wysiwyg/stylesheet.css", // id of toolbar element
+        stylesheets:"assets/wysiwyg/stylesheet.css", // stylesheet to be used
         parserRules:wysihtml5ParserRules // defined in parser rules set
     });
 javascript

@@ -16,5 +16,4 @@ Gem::Specification.new do |gem|
   gem.version       = Wysia::VERSION
 
   gem.add_dependency "railties", ">= 3.1"
-  gem.add_dependency "font-awesome-sass-rails"
 end
