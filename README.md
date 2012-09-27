@@ -19,14 +19,17 @@ Run:
 
     $ bundle install
 
-include the Javascript (wysihtm5) into your `application.js`:
-//= require wysia.js
+Include the Javascript (wysihtm5) into your `application.js`:
+
+    //= require wysia.js
 
 Include de css into your `applications.css`
-@import "wysia.scss";
 
-#TODO: this should always be inline?
-yield :javascript
+    @import "wysia.scss";
+
+TODO: this should always be inline?
+
+    yield :javascript
 
 ## Usage
 In your views simply use the `wysia_text_area` helper
