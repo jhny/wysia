@@ -46,7 +46,7 @@ using the options:
 = f.wysia_text_area :about, {:class => "shaded comment grey remark", :rows => 3, :id => "about_#{@user.id}_remark", :size => "small"}
 ```
 
-1. If you use `js: "inline"` as option, the javascript is yielded to a block called `:javascript`. In your layout or view use:
+1. If you use `js: "yield"` as option, the javascript is yielded to a block called `:javascript`. In your layout or view use:
 ```ruby
 yield :javascript
 ```
@@ -67,3 +67,9 @@ that includes a stack trace and any details that may be necessary to reproduce
 the bug, including your gem version, Ruby version, and operating system.
 Ideally, a bug report should include a pull request with failing specs.
 
+## Additional information
+
+### Authors
+
+* Johnny Eradus (https://github.com/jhny)
+* Benjamin Udink ten Cate (https://github.com/hezus)
