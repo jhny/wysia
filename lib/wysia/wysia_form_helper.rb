@@ -8,7 +8,7 @@ module Wysia
         size = "" if options[:size].nil?
         options.delete(:size) if options[:size].present?
         text_area_id = options[:id] || "#{object_name}_#{method}"
-        p options.inspect
+
         content = <<HTML
     <div id="#{text_area_id}_wysihtml5-toolbar" class="btn-toolbar">
         <div class="btn-group">
