@@ -12,9 +12,17 @@ This Gem uses
 ## Installation
 
 In your `Gemfile`, add the following dependencies:
+
+From rubygems
+```ruby
+gem 'wysia'
+```
+
+Or use the last version
 ```ruby
 gem 'wysia', :git => 'https://github.com/jhny/wysia.git'
 ```
+
 Run:
 ```unix
 $ bundle install
