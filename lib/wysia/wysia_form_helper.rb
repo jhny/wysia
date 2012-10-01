@@ -47,7 +47,7 @@ HTML
          js =<<javascript
         var editor = new wysihtml5.Editor("#{object_name}_#{method}", { // id of textarea element
         toolbar:"wysihtml5-toolbar", // id of toolbar element
-        stylesheets:"assets/wysiwyg/stylesheet.css", // stylesheet to be used
+        stylesheets:"/assets/wysiwyg/stylesheet.css", // stylesheet to be used
         parserRules:wysihtml5ParserRules // defined in parser rules set
     });
 javascript
