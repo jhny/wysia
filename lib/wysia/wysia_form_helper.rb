@@ -2,8 +2,9 @@ module Wysia
   module FormHelper
       def wysia_text_area(object_name, method, options = {})
 
-        size = " btn-mini" if options[:size] == "mini"
+        #size = " btn-mini" if options[:size] == "mini"
         size = " btn-small" if options[:size] == "small"
+        size = " btn-normal" if options[:size] == "normal"
         size = "" if options[:size].nil?
         options.delete(:size) if options[:size].present?
         text_area_id = options[:id] || "#{object_name}_#{method}"
@@ -54,12 +55,12 @@ HTML
 javascript
 
 
-        if options.has_key?("is_inline")
-          content = content + javascript_tag(js)
-        else
+        if options[:js].present? && options[:js] == "yield"
           content_for(:javascript) do
             javascript_tag(js).html_safe
           end
+        else
+          content = content + javascript_tag(js)
         end
 
         content.html_safe
