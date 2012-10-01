@@ -54,5 +54,16 @@ yield :javascript
 2. If you have multiple `wysia_text_area` elements in a single page, you need to provide a ID to the options to make sure they are distinguisable for the javascript.
 
 ## Contribute
+
 ### Edit gem
 Instead of pointing to the git repo, point to the local source `#gem 'wysia', :path =>  "/home/user/src/wysia"`
+
+[issues]: https://github.com/jhny/wysia/issues
+### Submitting an Issue
+We use the [GitHub issue tracker][issues] to track bugs and features. Before
+submitting a bug report or feature request, check to make sure it hasn't
+already been submitted. When submitting a bug report, please include a [Gist][]
+that includes a stack trace and any details that may be necessary to reproduce
+the bug, including your gem version, Ruby version, and operating system.
+Ideally, a bug report should include a pull request with failing specs.
+
