@@ -2,13 +2,15 @@ module Wysia
   module FormHelper
       def wysia_text_area(object_name, method, options = {})
 
-        size = " btn-mini" if size == "mini"
-        size = " btn-small" if size == "small"
-        size = "" if size.nil?
-        size = ""
+        #size = " btn-mini" if options[:size] == "mini"
+        size = " btn-small" if options[:size] == "small"
+        size = " btn-normal" if options[:size] == "normal"
+        size = "" if options[:size].nil?
+        options.delete(:size) if options[:size].present?
+        text_area_id = options[:id] || "#{object_name}_#{method}"
         p options.inspect
         content = <<HTML
-    <div id="wysihtml5-toolbar" style="" class="btn-toolbar">
+    <div id="#{text_area_id}_wysihtml5-toolbar" class="btn-toolbar">
         <div class="btn-group">
           <a class="btn#{size}" data-wysihtml5-command="bold"><i class="icon-bold"></i></a>
           <a class="btn#{size}" data-wysihtml5-command="italic"><i class="icon-italic"></i></a>
@@ -45,20 +47,20 @@ module Wysia
 HTML
 
          js =<<javascript
-        var editor = new wysihtml5.Editor("#{object_name}_#{method}", { // id of textarea element
-        toolbar:"wysihtml5-toolbar", // id of toolbar element
-        stylesheets:"assets/wysiwyg/stylesheet.css", // stylesheet to be used
+        var editor = new wysihtml5.Editor("#{text_area_id}", { // id of textarea element
+        toolbar:"#{text_area_id}_wysihtml5-toolbar", // id of toolbar element
+        stylesheets:"/assets/wysiwyg/stylesheet.css", // stylesheet to be used
         parserRules:wysihtml5ParserRules // defined in parser rules set
     });
 javascript
 
 
-        if options.has_key?("is_inline")
-          content = content + javascript_tag(js)
-        else
+        if options[:js].present? && options[:js] == "yield"
           content_for(:javascript) do
             javascript_tag(js).html_safe
           end
+        else
+          content = content + javascript_tag(js)
         end
 
         content.html_safe
