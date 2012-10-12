@@ -50,7 +50,7 @@ HTML
         var editor = new wysihtml5.Editor("#{text_area_id}", { // id of textarea element
         toolbar:"#{text_area_id}_wysihtml5-toolbar", // id of toolbar element
         stylesheets:"/assets/wysiwyg/stylesheet.css", // stylesheet to be used
-        parserRules:wysihtml5ParserRules // defined in parser rules set
+        parserRules: wysihtml5ParserRules // defined in parser rules set
     });
 javascript
 
