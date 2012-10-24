@@ -19,6 +19,8 @@ var wysihtml5ParserRules = {
     ul:     {},
     ol:     {},
     li:     {},
+    h1:     {rename_tag: "h3" },
+    h2:     {rename_tag: "h4" },
     a:      {
       set_attributes: {
         target: "_blank",
